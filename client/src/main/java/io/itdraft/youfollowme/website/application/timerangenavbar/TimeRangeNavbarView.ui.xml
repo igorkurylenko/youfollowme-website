@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+    <ui:with field="res" type="io.itdraft.youfollowme.website.resources.AppResources"/>
+
+    <g:HTMLPanel ui:field="categoryNavbarPanel" styleName="{res.style.navbar}">
+        <g:Button text="3 Hour" ui:field="hourButton" styleName="{res.style.navbarItem}"/>
+        <g:Button text="Day" ui:field="dayButton" styleName="{res.style.navbarItem}"/>
+        <g:Button text="Week" ui:field="weekButton" styleName="{res.style.navbarItem}"/>
+        <g:Button text="Month" ui:field="monthButton" styleName="{res.style.navbarItem}"/>
+        <g:Button ui:field="playButton" styleName="{res.style.navbarItem}">
+            <i class="{res.style.icon}">&#xE037;</i>
+        </g:Button>
+        <g:Button ui:field="pauseButton" styleName="{res.style.navbarItem}" visible="false">
+            <i class="{res.style.icon}">&#xE034;</i>
+        </g:Button>
+    </g:HTMLPanel>
+</ui:UiBinder>

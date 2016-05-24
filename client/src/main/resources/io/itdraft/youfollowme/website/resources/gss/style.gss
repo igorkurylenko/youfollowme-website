@@ -1,0 +1,89 @@
+@external "gwt-*";
+
+.container {
+    height: 100%;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	/* @alternate */
+	height: 100%;
+	margin: 0 auto -50px;
+}
+
+.footer, .push {
+	height: 50px;
+}
+
+.canvas {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 100px;
+    bottom: 50px;
+}
+
+.canvas:focus {
+    outline: none;
+}
+
+.navbar {
+    height: 50px;
+}
+
+.navbar-item {
+    border: 0;
+    background: none;
+    color: #d0d0d0;
+    text-decoration: underline;
+    font-weight: normal;
+    padding: 0px 5px;
+    margin: 0px 25px;
+    height: 25px;
+    line-height: 25px;
+}
+
+.navbar-item.highlighted {
+    color: black;
+    text-decoration: none;
+    background: #d0d0d0;
+}
+
+.navbar-item:focus {
+    outline: none;
+}
+
+.navbar-item .icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 23px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 49px;
+  vertical-align: middle;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.status {
+    position: absolute;
+    width: 100%;
+    top: 33%;
+    margin-top: -50px;
+    text-align: center;
+}
