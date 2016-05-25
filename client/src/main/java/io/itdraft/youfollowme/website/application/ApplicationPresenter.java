@@ -163,7 +163,7 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
 
     abstract class TrendsPresentationState {
         List<String> categoryPresentationPlaceTokens = Arrays.asList(
-                PlaceNameTokens.hashtags, PlaceNameTokens.domains, PlaceNameTokens.keywords);
+                PlaceNameTokens.hashtags, PlaceNameTokens.domains); // todo: add keywords in presentation
         List<PlaceParams.TimeRange> timeRangePresentationParams = Arrays.asList(
                 PlaceParams.TimeRange.hour, PlaceParams.TimeRange.day, PlaceParams.TimeRange.week, PlaceParams.TimeRange.month);
 

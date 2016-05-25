@@ -4,9 +4,6 @@ import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.gwtplatform.mvp.client.UiHandlers;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
-import io.itdraft.youfollowme.website.util.ui.Font;
-import io.itdraft.youfollowme.website.util.ui.LineStyle;
-import io.itdraft.youfollowme.website.util.ui.MeasuredText;
 import io.itdraft.youfollowme.website.dto.Trend;
 import io.itdraft.youfollowme.website.geometry.LineSegment;
 import io.itdraft.youfollowme.website.geometry.Point;
@@ -18,15 +15,16 @@ import io.itdraft.youfollowme.website.util.async.IteratorCallback;
 import io.itdraft.youfollowme.website.util.tuple.HasValue0;
 import io.itdraft.youfollowme.website.util.tuple.Pair;
 import io.itdraft.youfollowme.website.util.tuple.Triplet;
+import io.itdraft.youfollowme.website.util.ui.Font;
+import io.itdraft.youfollowme.website.util.ui.LineStyle;
+import io.itdraft.youfollowme.website.util.ui.MeasuredText;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static io.itdraft.youfollowme.website.util.CanvasUtil.clearCanvas;
-import static io.itdraft.youfollowme.website.util.CanvasUtil.getCanvasRectangle;
-import static io.itdraft.youfollowme.website.util.CanvasUtil.intersectsAny;
+import static io.itdraft.youfollowme.website.util.CanvasUtil.*;
 import static io.itdraft.youfollowme.website.util.async.AsyncUtil.foreachIncremental;
 import static java.lang.Math.*;
 
@@ -183,7 +181,7 @@ public abstract class BaseTrendsViewWithUiHandlers<C extends UiHandlers> extends
             final double normTrendWeight = getNormalizedTrendWeight(trend);
 
             for (Point point : canvasRect) {
-                if(!trendsAreBeingDisplayed.contains(trend)) return null;
+                if (!trendsAreBeingDisplayed.contains(trend)) return null;
 
                 Triplet<Rectangle, MeasuredText, Trend> trendDisplayInfo =
                         calcTrendDisplayInfo(trend, point, normTrendWeight);
@@ -275,7 +273,8 @@ public abstract class BaseTrendsViewWithUiHandlers<C extends UiHandlers> extends
         }
 
         private double getNormalizedTrendWeight(double trendWeight) {
-            return (trendWeight - trendsMinWeight) / (trendsMaxWeight - trendsMinWeight);
+            return trendsMaxWeight == trendsMinWeight ? 1 :
+                    (trendWeight - trendsMinWeight) / (trendsMaxWeight - trendsMinWeight);
         }
 
         private double calcFontColorAlpha(double fontSize) {
