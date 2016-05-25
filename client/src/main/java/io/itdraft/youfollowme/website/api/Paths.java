@@ -7,5 +7,5 @@ public class Paths {
 
     public static final String TIME_RANGE_PATH = "/{" + TIME_RANGE_PARAM + "}";
 
-    public static final String ROOT_PATH = "http://api.trends.itdraft.io:8081/v1";
+    public static final String ROOT_PATH = "http://api.youfollowme.itdraft.io:8081/v1";
 }
