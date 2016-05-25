@@ -57,6 +57,11 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.arcbees.analytics</groupId>
+            <artifactId>universal-analytics</artifactId>
+            <version>${universal-analytics.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

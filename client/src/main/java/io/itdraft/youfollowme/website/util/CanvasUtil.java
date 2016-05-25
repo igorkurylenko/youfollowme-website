@@ -32,6 +32,10 @@ public class CanvasUtil {
     public static void adjustCanvasSize(Canvas canvas, int width, int height) {
         double hiDPIRatio = getCanvasHiDPIRatio(canvas);
 
+        adjustCanvasSize(canvas, width < 0 ? 0 : width, height < 0 ? 0 : height, hiDPIRatio);
+    }
+
+    private static void adjustCanvasSize(Canvas canvas, int width, int height, double hiDPIRatio) {
         canvas.setCoordinateSpaceWidth((int) (width * hiDPIRatio));
         canvas.setCoordinateSpaceHeight((int) (height * hiDPIRatio));
 

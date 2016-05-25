@@ -4,6 +4,7 @@
     <inherits name="com.gwtplatform.dispatch.rest.DispatchRest"/>
     <inherits name="com.gwtplatform.dispatch.rest.delegates.ResourceDelegate"/>
     <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
+    <inherits name="com.arcbees.analytics.Analytics"/>
 
     <source path=""/>
 

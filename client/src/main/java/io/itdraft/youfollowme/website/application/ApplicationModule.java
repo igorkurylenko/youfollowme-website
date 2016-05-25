@@ -1,6 +1,7 @@
 package io.itdraft.youfollowme.website.application;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+import com.gwtplatform.mvp.client.googleanalytics.GoogleAnalytics;
 import io.itdraft.youfollowme.website.application.domain.DomainTrendsModule;
 import io.itdraft.youfollowme.website.application.hashtag.HashtagTrendsModule;
 import io.itdraft.youfollowme.website.application.keyword.KeywordTrendsModule;

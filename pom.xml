@@ -19,6 +19,7 @@
         <gwtp.version>1.5.3</gwtp.version>
         <gin.version>2.1.2</gin.version>
         <mavenVersion>3.0</mavenVersion>
+        <universal-analytics.version>2.1</universal-analytics.version>
     </properties>
 
     <dependencyManagement>
