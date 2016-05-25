@@ -3,37 +3,64 @@ package io.itdraft.youfollowme.website.util;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.canvas.dom.client.TextMetrics;
+import com.google.gwt.dom.client.Element;
+import io.itdraft.youfollowme.website.geometry.Rectangle;
+import io.itdraft.youfollowme.website.util.tuple.HasValue0;
+import io.itdraft.youfollowme.website.util.tuple.Pair;
 import io.itdraft.youfollowme.website.util.ui.Font;
 import io.itdraft.youfollowme.website.util.ui.LineStyle;
 import io.itdraft.youfollowme.website.util.ui.MeasuredText;
-import io.itdraft.youfollowme.website.geometry.Point;
-import io.itdraft.youfollowme.website.geometry.Rectangle;
-import io.itdraft.youfollowme.website.geometry.Size;
-import io.itdraft.youfollowme.website.util.tuple.HasValue0;
-import io.itdraft.youfollowme.website.util.tuple.Pair;
 
 import java.util.List;
 
-public class CanvasUtil {
-    public static Rectangle getCanvasRectangle(Canvas canvas) {
-        final Size size = new Size(canvas.getCoordinateSpaceWidth(),
-                canvas.getCoordinateSpaceHeight());
+import static io.itdraft.youfollowme.website.util.CSSUnit.px;
 
-        return new Rectangle(size);
+public class CanvasUtil {
+
+    private CanvasUtil() {
     }
+
+    public static Rectangle getCanvasRectangle(Canvas canvas) {
+        final double ratio = getCanvasHiDPIRatio(canvas.getCanvasElement());
+
+        double width = canvas.getCoordinateSpaceWidth() / ratio;
+        double height = canvas.getCoordinateSpaceHeight() / ratio;
+
+        return new Rectangle(width, height);
+    }
+
+    public static void adjustCanvasSize(Canvas canvas, int width, int height) {
+        double hiDPIRatio = getCanvasHiDPIRatio(canvas);
+
+        canvas.setCoordinateSpaceWidth((int) (width * hiDPIRatio));
+        canvas.setCoordinateSpaceHeight((int) (height * hiDPIRatio));
+
+        canvas.setWidth(width + px.name());
+        canvas.setHeight(height + px.name());
+
+        canvas.getContext2d().scale(hiDPIRatio, hiDPIRatio);
+    }
+
+    private static double getCanvasHiDPIRatio(Canvas canvas) {
+        return getCanvasHiDPIRatio(canvas.getCanvasElement());
+    }
+
+    private static native double getCanvasHiDPIRatio(Element canvas) /*-{
+        var context = canvas.getContext('2d'),
+            devicePixelRatio = $wnd.devicePixelRatio || 1,
+            backingStoreRatio = context.webkitBackingStorePixelRatio ||
+                context.mozBackingStorePixelRatio ||
+                context.msBackingStorePixelRatio ||
+                context.oBackingStorePixelRatio ||
+                context.backingStorePixelRatio || 1;
+
+        return devicePixelRatio / backingStoreRatio;
+    }-*/;
 
     public static void clearCanvas(Canvas canvas) {
         Context2d context2d = canvas.getContext2d();
         context2d.clearRect(0, 0, canvas.getCoordinateSpaceWidth(),
                 canvas.getCoordinateSpaceHeight());
-    }
-
-    public static void adjustCanvasSize(Canvas canvas, int width, int height) {
-        canvas.setWidth(String.valueOf(width) + CSSUnit.px.name());
-        canvas.setHeight(String.valueOf(height) + CSSUnit.px.name());
-
-        canvas.setCoordinateSpaceWidth(width);
-        canvas.setCoordinateSpaceHeight(height);
     }
 
     public static void displayText(Canvas canvas, Pair<Rectangle, MeasuredText> textDisplayInfo) {
@@ -84,18 +111,6 @@ public class CanvasUtil {
         TextMetrics textMetrics = context2d.measureText(text);
 
         return new MeasuredText(text, font, textMetrics);
-    }
-
-    private CanvasUtil() {
-    }
-
-    public static void drawPoint(Canvas canvas, Point point) {
-        drawPoint(canvas.getContext2d(), point);
-    }
-
-    public static void drawPoint(Context2d ctx, Point point) {
-        ctx.setFillStyle("#f2f2f2");
-        ctx.fillRect(point.getX(), point.getY(), 1, 1);
     }
 
     public static boolean intersectsAny(

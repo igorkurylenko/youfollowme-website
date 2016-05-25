@@ -17,6 +17,10 @@ public class Rectangle implements HasSize, HasPoints {
     private LineSegment leftEdgeLine;
     private double diagonalLength;
 
+    public Rectangle(double width, double height) {
+        this(new Size(width, height));
+    }
+
     public Rectangle(Size size) {
         this(new Point(size.getWidth() / 2, size.getHeight() / 2), size);
     }
