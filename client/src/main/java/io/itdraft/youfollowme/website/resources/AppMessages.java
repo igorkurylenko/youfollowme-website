@@ -9,4 +9,6 @@ public interface AppMessages extends Messages {
     String loading();
 
     String canvasIsNotSupported();
+
+    String requestError();
 }

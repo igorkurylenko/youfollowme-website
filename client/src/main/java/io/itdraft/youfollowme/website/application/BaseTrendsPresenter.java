@@ -1,5 +1,6 @@
 package io.itdraft.youfollowme.website.application;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.shared.GwtEvent;
@@ -19,6 +20,7 @@ import io.itdraft.youfollowme.website.resources.AppMessages;
 import io.itdraft.youfollowme.website.util.async.promise.DoneCallback;
 import io.itdraft.youfollowme.website.util.async.promise.FailCallback;
 import io.itdraft.youfollowme.website.util.async.promise.Promise;
+import sun.plugin2.message.ShowStatusMessage;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -95,10 +97,7 @@ public abstract class BaseTrendsPresenter<V extends BaseTrendsPresenter.TrendsVi
             }
         }).fail(new FailCallback<Throwable>() {
             public void onFail(Throwable result) {
-                HideStatusEvent.fire(BaseTrendsPresenter.this);
-
-                // todo: correctly handle failure!
-                throw new UnsupportedOperationException("Not implemented yet.");
+                DisplayStatusEvent.fire(BaseTrendsPresenter.this, appMessages.requestError());
             }
         });
     }

@@ -4,7 +4,7 @@
     <ui:with field="res" type="io.itdraft.youfollowme.website.resources.AppResources"/>
 
     <g:HTMLPanel ui:field="categoryNavbarPanel" styleName="{res.style.navbar}">
-        <g:Button text="3 Hour" ui:field="hourButton" styleName="{res.style.navbarItem}"/>
+        <g:Button text="3 Hours" ui:field="hourButton" styleName="{res.style.navbarItem}"/>
         <g:Button text="Day" ui:field="dayButton" styleName="{res.style.navbarItem}"/>
         <g:Button text="Week" ui:field="weekButton" styleName="{res.style.navbarItem}"/>
         <g:Button text="Month" ui:field="monthButton" styleName="{res.style.navbarItem}"/>
